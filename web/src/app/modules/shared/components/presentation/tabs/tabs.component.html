@@ -1,0 +1,32 @@
+<div class="clr-row clr-align-items-center clr-justify-content-between">
+  <div class="clr-col-10">
+    <app-breadcrumb [path]="title"> </app-breadcrumb>
+  </div>
+  <div class="clr-col-2">
+    <div *ngIf="buttonGroup" class="action-buttons">
+      <app-button-group [view]="buttonGroup"></app-button-group>
+    </div>
+  </div>
+</div>
+<clr-tabs *ngIf="tabs.length > 1; else noTabs">
+  <clr-tab *ngFor="let tab of tabs; trackBy: identifyTab">
+    <div clrTabLink class="tab-button">
+      <button clrTabLink class="tab-button" (click)="clickTab(tab.accessor)">
+        {{ tab.name }}
+      </button>
+      <clr-icon
+        shape="times"
+        *ngIf="closable"
+        (click)="closeTab(tab.accessor)"
+      ></clr-icon>
+    </div>
+    <ng-template [clrIfActive]="activeTab === tab.accessor">
+      <clr-tab-content>
+        <app-view-container [view]="tab.view"></app-view-container>
+      </clr-tab-content>
+    </ng-template>
+  </clr-tab>
+</clr-tabs>
+<ng-template #noTabs>
+  <app-view-container [view]="view"></app-view-container>
+</ng-template>

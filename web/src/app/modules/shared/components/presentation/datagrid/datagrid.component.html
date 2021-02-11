@@ -1,0 +1,86 @@
+<div
+  class="clr-row clr-align-items-center clr-justify-content-between"
+  *ngIf="showTitle() || buttonGroup"
+>
+  <h4 class="clr-col-10" *ngIf="showTitle()">{{ title }}</h4>
+  <clr-dg-action-bar class="clr-col-2" *ngIf="buttonGroup">
+    <app-button-group [view]="buttonGroup"></app-button-group>
+  </clr-dg-action-bar>
+</div>
+<clr-datagrid [clrDgLoading]="false">
+  <clr-dg-placeholder>
+    <ng-container *ngIf="placeholder?.length > 0; else emptyPlaceholder">
+      {{ placeholder }}
+    </ng-container>
+    <ng-template #emptyPlaceholder>
+      <!--      All content has been filtered out.-->
+    </ng-template>
+  </clr-dg-placeholder>
+  <clr-dg-column
+    *ngFor="let columnName of columns; trackBy: identifyColumn"
+    [clrDgSortBy]="columnName === 'Age' ? timeStampComparator : null"
+    [(clrDgSortOrder)]="sortOrder"
+  >
+    {{ columnName }}
+    <clr-dg-filter *ngIf="filters[columnName]">
+      <app-content-filter
+        [column]="columnName"
+        [filter]="filters[columnName]"
+      ></app-content-filter>
+    </clr-dg-filter>
+    <clr-dg-filter *ngIf="!filters[columnName]">
+      <app-content-text-filter [column]="columnName"></app-content-text-filter>
+    </clr-dg-filter>
+  </clr-dg-column>
+  <clr-dg-row
+    *clrDgItems="let row of rowsWithMetadata; trackBy: identifyRow"
+    [ngClass]="row | filterDeletedDatagridRow"
+  >
+    <clr-dg-action-overflow *ngIf="row.actions.length > 0 && !row.isDeleted">
+      <ng-container *ngFor="let action of row.actions; trackBy: identifyAction">
+        <button class="action-item" (click)="runAction(action)">
+          {{ action.name }}
+        </button>
+      </ng-container>
+    </clr-dg-action-overflow>
+    <clr-dg-cell *ngFor="let column of columns; trackBy: identifyColumn">
+      <app-view-container [view]="row.data[column]"></app-view-container>
+    </clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">
+        Items per page
+      </clr-dg-page-size>
+      <ng-container *ngIf="rowsWithMetadata?.length > 0">
+        {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of
+        {{ pagination.totalItems }} items
+      </ng-container>
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>
+
+<clr-modal [(clrModalOpen)]="isModalOpen">
+  <h3 class="modal-title">
+    {{ actionDialogOptions?.confirmation?.title }}
+  </h3>
+  <div class="modal-body">
+    <div
+      ngPreserveWhitespaces
+      [innerHTML]="actionDialogOptions?.confirmation?.body"
+    ></div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="cancelModal()">
+      Cancel
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="acceptModal()"
+      [ngClass]="['btn', 'btn-' + actionDialogOptions?.type + '-outline']"
+    >
+      {{ actionDialogOptions?.text }}
+    </button>
+  </div>
+</clr-modal>

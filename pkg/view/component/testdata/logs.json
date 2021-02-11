@@ -1,0 +1,15 @@
+{
+    "metadata": {
+      "type": "logs",
+      "title": [
+        {
+          "config": { "value": "Logs" },
+          "metadata": { "type": "text" }
+        }
+      ]
+    },
+    "config": {
+        "containers": ["one", "two"],
+        "durations": [{"label": "5 minutes", "seconds":  300}]
+    }
+}

@@ -1,0 +1,18 @@
+.git
+web/node_modules
+build
+dist
+docs
+examples
+.vscode
+examples
+web/rice-box.go
+choco
+ci
+configs
+
+# electron bundling
+/vendor/astilectron*
+/vendor/electron*
+/vendor/status.json
+/output

@@ -1,0 +1,31 @@
+/* Copyright (c) 2019 the Octant contributors. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/* You can add global styles to this file, and also import other style files */
+
+@import './sass/links';
+@import './sass/mixins';
+@import './sass/variables';
+@import '~highlight.js/styles/github.css';
+@import '~overlayscrollbars/css/OverlayScrollbars.css';
+@import '~@ng-select/ng-select/themes/default.theme.css';
+
+// Avoid Datagrid's header sticky position.
+.datagrid-table .datagrid-header {
+  position: initial;
+}
+
+.clr-vertical-nav .nav-btn {
+  display: none;
+}
+
+// avoid markdown text rendering badly in table/cards
+.datagrid-cell .markdown p, .card-block .markdown p {
+  line-height: 0.7rem;
+  font-size: 0.65rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}

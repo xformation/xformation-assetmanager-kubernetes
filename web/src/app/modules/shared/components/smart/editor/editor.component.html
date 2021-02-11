@@ -1,0 +1,22 @@
+<div class="editor-container">
+  <div class="editor">
+    <ngx-monaco-editor
+      [(ngModel)]="value"
+      [options]="options"
+      [attr.modelUri]="uri"
+    ></ngx-monaco-editor>
+  </div>
+
+  <div class="controls">
+    <button (click)="reset()" [disabled]="isUpdateEnabled()" class="btn">
+      Reset
+    </button>
+    <button
+      (click)="submit()"
+      [disabled]="isUpdateEnabled()"
+      class="btn btn-primary"
+    >
+      {{ submitLabel }}
+    </button>
+  </div>
+</div>
