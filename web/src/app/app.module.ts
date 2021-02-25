@@ -13,6 +13,7 @@ import { highlightProvider } from './modules/shared/highlight';
 import { MonacoEditorModule } from '@materia-ui/ngx-monaco-editor';
 import { ComponentReuseStrategy } from './modules/shared/component-reuse.strategy';
 import { windowProvider, WindowToken } from './window';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @Injectable()
 export class UnstripTrailingSlashLocation extends Location {
@@ -30,6 +31,7 @@ export class UnstripTrailingSlashLocation extends Location {
     HttpClientModule,
     RouterModule,
     MonacoEditorModule,
+    NgCircleProgressModule,
     // routing loads last
     AppRoutingModule,
   ],

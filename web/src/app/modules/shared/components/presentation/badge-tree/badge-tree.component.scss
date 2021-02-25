@@ -1,0 +1,77 @@
+/* Copyright (c) 2019 the Octant contributors. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+.tree-wrapper {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+
+    .tree-left {
+        display: inline-block;
+        vertical-align: top;
+        width: 25%;
+    }
+
+    .tree-right {
+        display: inline-block;
+        vertical-align: top;
+        width: 75%;
+        padding: 0px;
+        .table{
+            margin-top: 0;
+            thead{
+                tr{
+                    th{
+                        background-color: #EFF2F7;
+                        padding: 10px 30px;
+                        text-align: left;
+                        &:first-child{
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    td{
+                        padding: 10px 30px;
+                        text-align: left;
+                        line-height: .8rem;
+                        &:first-child{
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.explorer-editor-main{
+    box-shadow: 0px 1px 6px #00000029;
+    border-radius: 5px;
+    padding-bottom: 0px;
+    
+}
+.explorer-editor-main-active{
+    box-shadow: 0px 1px 6px #00000029;
+    border-radius: 5px;
+    padding-bottom: 0px;
+    height: 600px;
+    
+}
+.explorer-editor{
+    background-color: #D9E4F2;
+    border-radius: 5px;
+    padding: 10px 15px;
+
+    span{
+        font-size: 14px;
+        line-height: 20px;
+        color: #3B4859;
+    }
+    .explorer-btn{
+        float: right;
+        color: #57A4FF;
+        font-weight: 700;
+    }
+}

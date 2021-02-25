@@ -1,0 +1,39 @@
+<div class="badge-container">
+  <div class="badge-counter">
+    <div class="badge-counter-box" *ngFor="let badge of badgeData" [ngStyle]="{'background-color': badge.bgcolor}">
+      <div class="resources" [ngStyle]="{'background-color': badge.resourcecolor}"></div>
+      <span>{{badge.name}}</span>
+      <p>{{badge.percentage}}</p>
+    </div>
+  </div>
+  <div class="reserved-container">
+    <div class="cores-counter-box" *ngFor="let reserved of reserevedBadgeData">
+      <span>{{reserved.name}}
+        <hr>
+      </span>
+      <circle-progress [percent]="reserved.percentage" [radius]="50" [outerStrokeWidth]="15" [innerStrokeWidth]="15"
+        [outerStrokeColor]="'#1F78B4'" [innerStrokeColor]="'#A6CEE3'" [space]="-15" [animation]="true"
+        [animationDuration]="300" [showSubtitle]="false" [showInnerStroke]="true" [showZeroOuterStroke]="true"
+        [showBackground]="false" [titleColor]="'#1F78B4'" [outerStrokeGradient]="true"
+        [outerStrokeGradientStopColor]="'#1F78B4'">
+      </circle-progress>
+
+      <div class="reserved-btn">{{reserved.description}}</div>
+    </div>
+    <table class="table table-compact">
+      <thead>
+        <tr>
+          <td class="left" *ngFor="let column of columns; trackBy: trackByIdentity">
+            {{ column }}
+          </td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows; trackBy: trackByIndex">
+          <td class="left" *ngFor="let column of columns; trackBy: trackByIdentity">
+            <app-view-container [view]="row[column]"></app-view-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

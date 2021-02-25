@@ -80,6 +80,7 @@
     "lodash-es": "^4.17.15",
     "marked": "^1.2.0",
     "monaco-editor": "^0.21.2",
+    "ng-circle-progress": "^1.6.0",
     "ngx-highlightjs": "^4.1.2",
     "overlayscrollbars-ngx": "^0.2.2",
     "rxjs": "^6.6.3",

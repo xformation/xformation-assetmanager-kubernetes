@@ -1,0 +1,9 @@
+<ul *ngIf="treeData" class="tree-data">
+  <li *ngFor="let node of treeData; let i = index">
+    <div (click)="toggleChild(node)" [ngClass]="{'active' : activeItem === i}" class="heading">
+      <span *ngIf="node.subData != 0" class="caret-right"></span> 
+      <span class="name">{{ node.title }}</span> 
+    </div>
+    <app-tree *ngIf="node.isOpened" [treeData]="node.subData" class="tree-sub-data"></app-tree>
+  </li>
+</ul>

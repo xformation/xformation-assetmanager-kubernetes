@@ -81,6 +81,10 @@ import { BottomPanelComponent } from './components/smart/bottom-panel/bottom-pan
 import { DataModule } from '../../data/data.module';
 import { OverlayscrollbarsModule } from 'overlayscrollbars-ngx';
 import { StringEscapePipe } from './pipes/stringEscape/string.escape.pipe';
+import { BadgeComponent } from './components/presentation/badge/badge.component';
+import { BadgeTreeComponent } from './components/presentation/badge-tree/badge-tree.component';
+import { TreeComponent } from './components/presentation/tree/tree.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -155,6 +159,9 @@ import { StringEscapePipe } from './pipes/stringEscape/string.escape.pipe';
     MissingComponentComponent,
     OctantTooltipComponent,
     BottomPanelComponent,
+    BadgeComponent,
+    BadgeTreeComponent,
+    TreeComponent
   ],
   entryComponents: [
     AlertComponent,
@@ -217,6 +224,9 @@ import { StringEscapePipe } from './pipes/stringEscape/string.escape.pipe';
     StepperComponent,
     ViewContainerComponent,
     MissingComponentComponent,
+    BadgeComponent,
+    BadgeTreeComponent,
+    TreeComponent
   ],
   imports: [
     ClarityModule,
@@ -229,6 +239,18 @@ import { StringEscapePipe } from './pipes/stringEscape/string.escape.pipe';
     ReactiveFormsModule,
     ResizableModule,
     RouterModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 50,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 16,
+      // outerStrokeColor: "#78C000",
+      innerStrokeColor: "#A6CEE3",
+      animationDuration: 300,
+      showSubtitle: false,
+      showInnerStroke: true,
+      showZeroOuterStroke: true
+    })
   ],
   providers: [highlightProvider(), dynamicComponents()],
   exports: [
@@ -295,6 +317,9 @@ import { StringEscapePipe } from './pipes/stringEscape/string.escape.pipe';
     OctantTooltipComponent,
     BottomPanelComponent,
     StringEscapePipe,
+    BadgeComponent,
+    BadgeTreeComponent,
+    TreeComponent
   ],
 })
-export class SharedModule {}
+export class SharedModule { }

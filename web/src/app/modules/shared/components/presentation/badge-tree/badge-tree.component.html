@@ -1,0 +1,45 @@
+<div class="tree-wrapper">
+  <div class="tree-left">
+    <app-tree [treeData]="badgeTreeData"></app-tree>
+  </div>
+  <div class="tree-right">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Labels</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>Node 3</td>
+        </tr>
+        <tr>
+          <td>Labels</td>
+          <td>beta.kubernetes.io/arch: amd64 kubernetes.io/hostname: node2 mayadata.io/data-plane: true
+            microk8s.io/cluster: true nodetype: localpv, topology.cstor.openebs.io/nodeName: node2 kubernetes.io/os:
+            linux, mayadata.io/control-plane: true kubernetes.io/arch: amd64 beta.kubernetes.io/os: Linux</td>
+        </tr>
+        <tr>
+          <td>Labels</td>
+          <td>DiskPressure: False MemoryPressure: False NetworkUnavailable: False PIDPressure: False Ready: True</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td>3 days</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div [ngClass]="{'explorer-editor-main-active': expandYML, 'explorer-editor-main': !expandYML}">
+  <div (click)="toggleYML()" class="explorer-editor">
+    <span>Explorer</span>
+    <div class="explorer-btn">
+      <clr-icon *ngIf="expandYML == false" shape="plus"></clr-icon>
+      <clr-icon *ngIf="expandYML == true" shape="minus"></clr-icon>
+    </div>
+  </div>
+  <app-view-editor *ngIf="expandYML == true" [view]="editorView"></app-view-editor>
+</div>
